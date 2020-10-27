@@ -144,7 +144,7 @@ public:
     //!\name Operations: "appending" one or more bytes
     //!\{
     // -----------------------------------------------------------------------
-    void                push_back( byte_type b ) ;
+    void                append( byte_type b ) ;
 
     template< typename InputIter >
     void                append( InputIter begin, InputIter end ) ;
