@@ -34,8 +34,6 @@ class crc_cache ;
 //      crc
 //      ===
 //
-//!     \copybrief crc.hpp
-//!
 //!     This template is instantiated over a traits class which provides
 //!     the characterizing parameters of the CRC. To the best of my
 //!     knowledge, these parameters were first identified by Ross N.
@@ -44,66 +42,7 @@ class crc_cache ;
 //!     on <ross.net> at the time of this writing---October 7, 2020---is
 //!     in the same directory of this source file).
 //!
-//!     crc.hpp also provides traits classes for common CRC types (of
-//!     course, other such classes can be defined by the user).
-//!
-//!     \warning
-//!         I haven't thought out the case <code>CHAR_BIT > 8</code>, so
-//!         expect little changes to be done for unusual machines.
-//!
-//!     Each traits class must declare the following public members:
-//!
-//!     <dl>
-//!     <dt><tt>value_type:</tt></dt><dd>
-//!         A typedef to an unsigned type (e.g. \c std::uint32_t) for
-//!         holding the CRC value. The width of this type can be larger
-//!         than \c width if e.g. an exactly-sized type is not available
-//!         on your implementation or you want to see the effect on
-//!         performance of using a different type (e.g. \c uint_fast16_t
-//!         for CRC-16).</dd>
-//!
-//!     <dt><tt>width:</tt></dt><dd>
-//!         The number of bits in the CRC. This is also the degree of
-//!         the polynomial used for divisions. The polynomial can have
-//!         at most <code>width + 1</code> terms, but since the highest
-//!         degree term has always a coefficient of <tt>1</tt>
-//!         (otherwise the degree wouldn't be \c width), that
-//!         coefficient will be implied. The type of this constant is
-//!         <code>int const</code>.</dd>
-//!
-//!     <dt><tt>poly:</tt></dt><dd>
-//!         The unreflected divisor polynomial, with the top-most bit
-//!         omitted; we emphasize that this is unreflected, regardless
-//!         of \c reflect_in and \c reflect_out. The type is <code>
-//!         value_type const</code>.</dd>
-//!
-//!     <dt><tt>init:</tt></dt><dd>
-//!         An initial value for the computation. Type <code>value_type
-//!         const</code>.</dd>
-//!
-//!     <dt><tt>reflect_in:</tt></dt><dd>
-//!         \c true if and only if each input byte must be considerered
-//!         reflected (UART); note that, as an optimization, this
-//!         implementation will not actually reflect the input bytes,
-//!         but the resulting CRCs will be as if it did. The type is
-//!         <code>bool const</code>.</dd>
-//!
-//!     <dt><tt>reflect_out:</tt></dt><dd>
-//!         \c true if and only if the final calculated value (before
-//!         the XOR) must be reflected; usually equal to \c reflect_in,
-//!         but at least one CRC exists (CRC-12/UMTS) for which these
-//!         two values are different. The type is <code>bool const
-//!         </code>.</dd>
-//!
-//!     <dt><tt>xor_out:</tt></dt><dd>
-//!         The final value to XOR with. The type is <code>value_type
-//!         const</code>.</dd>
-//!
-//!     <dt><tt>check:</tt></dt><dd>
-//!         The CRC of the sequence "123456789" (nine ASCII characters,
-//!         without any terminator); used to verify the implementation
-//!         and the traits class.</dd>
-//!     </dl>
+
 // ---------------------------------------------------------------------------
 template< typename Traits >
 class crc
